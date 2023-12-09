@@ -30,19 +30,19 @@ func Init() (string, error) {
 	// 環境変数取得
 	env.Host = os.Getenv("HOST") // host=コンテナ名
 	if env.Host == "" {
-		return "", errors.New("HOST is not found.")
+		return "", errors.New("HOST is not found")
 	}
 	env.User = os.Getenv("POSTGRES_USER")
 	if env.User == "" {
-		return "", errors.New("POSTGRES_USER is not found.")
+		return "", errors.New("POSTGRES_USER is not found")
 	}
 	env.Pass = os.Getenv("POSTGRES_PASSWORD")
 	if env.Pass == "" {
-		return "", errors.New("POSTGRES_PASSWORD is not found.")
+		return "", errors.New("POSTGRES_PASSWORD is not found")
 	}
 	env.DB = os.Getenv("POSTGRES_DB")
 	if env.DB == "" {
-		return "", errors.New("POSTGRES_DB is not found.")
+		return "", errors.New("POSTGRES_DB is not found")
 	}
 	env.Port = os.Getenv("PORT")
 	if env.Port == "" {
@@ -52,14 +52,14 @@ func Init() (string, error) {
 	if env.TimeZone == "" {
 		env.TimeZone = "Asia/Tokyo"
 	}
-
+	
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s TimeZone=%s", env.Host, env.User, env.Pass, env.DB, env.Port, env.TimeZone)
 	return dsn, nil
 }
 
 func Connect(dsn string) (*gorm.DB, error) {
 	if dsn == "" {
-		return &gorm.DB{}, errors.New("Dsn is not found. Please exec init.")
+		return &gorm.DB{}, errors.New("Dsn is not found, Please exec init")
 	}
 	var err error
 	if db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{}); err != nil {
