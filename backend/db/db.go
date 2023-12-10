@@ -21,8 +21,9 @@ type DbEnv struct {
 }
 
 var db *gorm.DB
+
 const retry = 10 // 再接続回数
-var count = 0     // 接続回数
+var count = 0    // 接続回数
 
 func Init() (string, error) {
 	var env DbEnv
@@ -52,7 +53,6 @@ func Init() (string, error) {
 	if env.TimeZone == "" {
 		env.TimeZone = "Asia/Tokyo"
 	}
-	
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s TimeZone=%s", env.Host, env.User, env.Pass, env.DB, env.Port, env.TimeZone)
 	return dsn, nil
 }
