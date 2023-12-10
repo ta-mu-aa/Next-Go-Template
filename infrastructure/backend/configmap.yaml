@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  HOST: postgres
+  PORT: '5432'
+  POSTGRES_DB: db
+  POSTGRES_USER: testuser
+  TIME_ZONE: Asia/Tokyo
+kind: ConfigMap
+metadata:
+  name: go-app-config
