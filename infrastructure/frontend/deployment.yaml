@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjs-app-template
+  labels:                   
+    app: nextjsweb          
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nextjsweb
+  template:
+    metadata:
+      labels:
+        app: nextjsweb  
+    spec:
+      containers:
+      - name: nextjsclient
+        image: tariqulislam/nextjs-kube-integration:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            cpu: "100m"
+            memory: "120Mi"
+          requests:
+            cpu: "50m"
+            memory: "60Mi"
+        ports:
+        - containerPort: 3000
+      restartPolicy: Always
