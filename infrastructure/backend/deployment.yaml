@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: go-app-template
   labels:
-    app: go-app-template
+    app: go-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: go-app-template
+      app: go-app
   template:
     metadata:
       labels:
-        app: go-app-template
+        app: go-app
     spec:
       containers:
-      - name: go-app-template
+      - name: goapp
         image: go-app-template
         imagePullPolicy: IfNotPresent
         ports:
