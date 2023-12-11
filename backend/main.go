@@ -21,9 +21,10 @@ func main() {
 	}
 
 	r := gin.Default()
-	r.GET("/hello", func(context *gin.Context) {
+	r.GET("/health", func(context *gin.Context) {
+		log.Println("--health--")
 		context.JSON(200, gin.H{
-			"message": "Hello World!",
+			"message": "ok",
 		})
 	})
 	log.Fatal(r.Run(":8080"))
