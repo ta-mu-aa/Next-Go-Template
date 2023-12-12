@@ -25,6 +25,18 @@ spec:
           requests:
             cpu: "50m"
             memory: "60Mi"
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 30
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 30
         ports:
         - containerPort: 3000
       restartPolicy: Always
